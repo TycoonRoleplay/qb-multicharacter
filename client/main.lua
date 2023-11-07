@@ -95,6 +95,14 @@ end
 
 -- Events
 
+
+-- NUI Callbacks
+CreateThread(function()
+    while not NetworkIsPlayerActive(PlayerId()) do Wait(100) end
+    Wait(1000)
+    openCharMenu(bool)
+end)
+
 RegisterNetEvent('qb-multicharacter:client:closeNUIdefault', function() -- This event is only for no starting apartments
     DeleteEntity(charPed)
     SetNuiFocus(false, false)
@@ -167,8 +175,6 @@ RegisterNetEvent('qb-multicharacter:client:spawnLastLocation', function(coords, 
         end
     end, cData.citizenid)
 end)
-
--- NUI Callbacks
 
 RegisterNUICallback('closeUI', function(_, cb)
     local cData = data.cData

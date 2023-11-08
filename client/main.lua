@@ -100,7 +100,7 @@ end
 CreateThread(function()
     while not NetworkIsPlayerActive(PlayerId()) do Wait(100) end
     Wait(1000)
-    openCharMenu(bool)
+    openCharMenu(true)
 end)
 
 RegisterNetEvent('qb-multicharacter:client:closeNUIdefault', function() -- This event is only for no starting apartments

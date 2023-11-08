@@ -13,7 +13,7 @@ local randommodels = { -- models possible to load when choosing empty slot
 
 CreateThread(function()
 	while true do
-		Wait(0)
+		Wait(1)
 		if NetworkIsSessionStarted() then
 			TriggerEvent('qb-multicharacter:client:chooseChar')
 			return
@@ -97,11 +97,6 @@ end
 
 
 -- NUI Callbacks
-CreateThread(function()
-    while not NetworkIsPlayerActive(PlayerId()) do Wait(100) end
-    Wait(1000)
-    openCharMenu(true)
-end)
 
 RegisterNetEvent('qb-multicharacter:client:closeNUIdefault', function() -- This event is only for no starting apartments
     DeleteEntity(charPed)

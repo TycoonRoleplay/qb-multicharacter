@@ -12,9 +12,11 @@ local randommodels = { -- models possible to load when choosing empty slot
 -- Main Thread
 
 CreateThread(function()
+	print("QB-MultiCharacter", "^3Preparing to start session...^7")
 	while true do
 		Wait(1)
 		if NetworkIsSessionStarted() then
+			print("QB-MultiCharacter", "^2Session Started^7")
 			TriggerEvent('qb-multicharacter:client:chooseChar')
 			return
 		end
@@ -128,12 +130,12 @@ RegisterNetEvent('qb-multicharacter:client:chooseChar', function()
     Wait(1000)
     local interior = GetInteriorAtCoords(Config.Interior.x, Config.Interior.y, Config.Interior.z - 18.9)
     LoadInterior(interior)
-    while not IsInteriorReady(interior) do
-        Wait(1000)
-    end
+    --while not IsInteriorReady(interior) do
+    --    Wait(1000)
+    --end
     FreezeEntityPosition(PlayerPedId(), true)
     SetEntityCoords(PlayerPedId(), Config.HiddenCoords.x, Config.HiddenCoords.y, Config.HiddenCoords.z)
-    Wait(1500)
+    Wait(5000)
     ShutdownLoadingScreen()
     ShutdownLoadingScreenNui()
     openCharMenu(true)
